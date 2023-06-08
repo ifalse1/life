@@ -1,5 +1,6 @@
 class cell:
     def __init__(self, x, y, alive, neighbors=None):
+        self.total = 0
         if neighbors is None:
             neighbors = []
         self.x = x
@@ -26,18 +27,17 @@ class cell:
     def postNeighbors(self, neighbors):
         self.neighbors = neighbors
 
-    def updateCell(self):
-        total = 0
+    def prepUpdateCell(self):
+        self.total = 0
         for i in self.neighbors:
-            print(i, end=",")
             if str(i) == 'x':
-                total += 1
-        print(" : " + str(total))
+                self.total += 1
 
-        if total < 2 and self.alive:
+    def updateCell(self):
+        if self.total < 2 and self.alive:
             self.alive = False
-        elif total > 3 and self.alive:
+        elif self.total > 3 and self.alive:
             self.alive = False
-        elif total == 3 and not self.alive:
+        elif self.total == 3 and not self.alive:
             self.alive = True
 

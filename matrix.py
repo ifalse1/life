@@ -76,10 +76,12 @@ class matrix:
                 print(j, end=" ")
             print()
 
-    def updateMatrix(self):
+    def cycle(self):
         for i in range(len(self.matrix)):
             for j in self.matrix[i]:
-                print(str(i) + ":")
+                j.prepUpdateCell()
+        for i in range(len(self.matrix)):
+            for j in self.matrix[i]:
                 j.updateCell()
-                # print(j, end=" ")
-        print("-----")
+                print(j, end=" ")
+            print()
