@@ -1,5 +1,7 @@
 class cell:
-    def __init__(self, x, y, alive, neighbors=[]):
+    def __init__(self, x, y, alive, neighbors=None):
+        if neighbors is None:
+            neighbors = []
         self.x = x
         self.y = y
         self.alive = alive
@@ -27,8 +29,10 @@ class cell:
     def updateCell(self):
         total = 0
         for i in self.neighbors:
+            print(i, end=",")
             if str(i) == 'x':
                 total += 1
+        print(" : " + str(total))
 
         if total < 2 and self.alive:
             self.alive = False
@@ -36,3 +40,4 @@ class cell:
             self.alive = False
         elif total == 3 and not self.alive:
             self.alive = True
+

@@ -5,7 +5,7 @@ size = int(input("What is the size? "))
 
 life = matrix(size)
 life.printFirstMatrix()
-print()
+print("-----")
 life.updateMatrix()
 '''
 while True:
